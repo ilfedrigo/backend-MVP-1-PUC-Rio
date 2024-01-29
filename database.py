@@ -1,20 +1,20 @@
 import sqlite3
 
-def conectar_bd():
+def connect_db():
     return sqlite3.connect('database.db')
 
-def inicializar_bd():
-    with conectar_bd() as conexao:
-        cursor = conexao.cursor()
+def initialize_db():
+    with connect_db() as connection:
+        cursor = connection.cursor()
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS livros (
+        CREATE TABLE IF NOT EXISTS books (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            titulo TEXT NOT NULL,
-            autor TEXT NOT NULL,
-            comentario TEXT
+            title TEXT NOT NULL,
+            author TEXT NOT NULL,
+            comment TEXT
         )
         """)
-        conexao.commit()
+        connection.commit()
 
 if __name__ == '__main__':
-    inicializar_bd()
+    initialize_db()
